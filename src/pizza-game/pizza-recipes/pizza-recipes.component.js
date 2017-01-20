@@ -1,5 +1,11 @@
 class PizzaRecipes{
     constructor(){}
+    $onInit(){
+        this.pizza={
+            "name": "Margarita",
+            "toppings":["ham","chesses","Ham"]
+        }
+    }
 }
 
 export const PizzaRecipes={
