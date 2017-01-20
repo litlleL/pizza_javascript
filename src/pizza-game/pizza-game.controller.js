@@ -40,10 +40,12 @@ export class PizzaGameController {
     checkIfPizzaExist() {
 
         let recipeDone = this.PizzaService.checkPizza(this.pizza)
-        console.log(this.pizza)
+        console.log(recipeDone)
         if (recipeDone) {
             this.pool.splice(recipeDone.id, 1)
         }
+
+        this.pizza = [];
     }
 
     addTopping(topping) {

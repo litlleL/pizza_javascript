@@ -19,6 +19,6 @@
      bindings: {
          pizzat: '<',
      },
-     template: '<p> {{ $ctrl.pizzat }}</p>',
+     template: '<p>{{ $ctrl.pizzat }}</p>',
      controller: PizzaMakingController
  }
