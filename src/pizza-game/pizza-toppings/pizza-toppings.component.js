@@ -12,17 +12,18 @@ class PizzaToppingsController{
         // } 
     }
     toppingSelect(topping){
-        this.topping=topping;
+        this.topping=angular.copy(topping);
+        this.toppingBack({ $event:this.topping});
     }
 }
 
 export const PizzaToppings ={
     bindings:{
-        listToppings:'<'
-
+       allToppings:'<',
+       toppingBack:'&'//topping-back
     },
+
     template : `  <button ng-repeat="topping in $ctrl.allToppings track by $index" ng-click="$ctrl.toppingSelect(topping)" type="button" >
-                   
                      </button>
                      <pre>
                         
