@@ -14,15 +14,15 @@ export default angular.module('PizzaGame', [])
 
 .component('pizzaPool', PizzaPool)
 
-
 .component('pizzaRecipes', PizzaRecipes)
 
 .service('PizzaService', PizzaService)
 
 .component('pizzaToppings', PizzaToppings)
 
-.component('pizzaMaking',PizzaMaking)
-.component('pizzaActions',PizzaActions)
+.component('pizzaMaking', PizzaMaking)
+
+.component('pizzaActions', PizzaActions)
 
 
 .name;

@@ -11,9 +11,9 @@
 
      }
 
-     setAction(str) {
+     setAction() {
 
-         this.onChampignon({ $event: str });
+         this.onChampignon({});
 
      }
 

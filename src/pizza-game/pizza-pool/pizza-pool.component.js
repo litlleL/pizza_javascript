@@ -26,5 +26,6 @@
             </button>
         </div>
     `,
+
      controller: PizzaPoolController
  }
