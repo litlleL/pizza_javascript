@@ -11,8 +11,8 @@ class PizzaToppingsController{
         //   this.toppings = angular.copy(changes.listToppings.currentValue);  
         // } 
     }
-    toppingSelect(idTopping){
-        
+    toppingSelect(topping){
+        this.topping=topping;
     }
 }
 
@@ -21,8 +21,8 @@ export const PizzaToppings ={
         listToppings:'<'
 
     },
-    template : `  <button ng-click="$ctrl.toppingSelect()" type="button" >
-                    <span>&times;</span>
+    template : `  <button ng-repeat="topping in $ctrl.allToppings track by $index" ng-click="$ctrl.toppingSelect(topping)" type="button" >
+                   
                      </button>
                      <pre>
                         
