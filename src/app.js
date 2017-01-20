@@ -1,12 +1,11 @@
 import angular from 'angular';
-import ngRoute from 'angular-route';
 
-import PizzaPool from './components/pizza-pool/pizza-pool.component';
+import PizzaGame from './pizza-game';
 
 angular.module('app', [
-  PizzaPool
+    PizzaGame
 ])
-.value('Version', '1.0.0')
+
 .run(function() {
-  console.log('PizzaYOLO !');
+    console.log('PizzaYOLO !');
 })
