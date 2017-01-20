@@ -20,6 +20,12 @@ export class PizzaGameController {
         this.pizzasPool = [{
             name: 'Margharita',
             toppings: ["pate", "tomato", "ham", "fromaggio"]
+        }, {
+            name: 'Margharita',
+            toppings: ["pate", "tomato", "ham", "fromaggio"]
+        }, {
+            name: "Regina",
+            toppings: ["pate", "tomato", "mushrooms"]
         }]
 
         this.allToppings = [{

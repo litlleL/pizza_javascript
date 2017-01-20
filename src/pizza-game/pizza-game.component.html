@@ -1,15 +1,15 @@
 <div class="container">
 
     <div class="row">
-        <pizza-pool class="col-xs-6" ng-repeat=" pizza in $ctrl.pizzasPool track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
+        <pizza-pool class="col-xs-1" ng-repeat=" pizza in $ctrl.pool track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
             d
         </pizza-pool>
-        <pizza-timer class="col-xs-6">
-            d
-        </pizza-timer>
     </div>
 
     <div class="row">
+        <pizza-timer class="col-xs-1">
+            d
+        </pizza-timer>
         <pizza-making class="col-xs-4">
             d
         </pizza-making>
