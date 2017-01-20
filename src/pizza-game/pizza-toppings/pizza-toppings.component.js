@@ -8,18 +8,20 @@ class PizzaToppingsController {
     }
 
     toppingSelect(topping) {
-        this.toppingBack({ $event: this.topping });
+
+        this.onToppingback({ $event: topping });
+
     }
 }
 
 export const PizzaToppings = {
     bindings: {
         topping: '<',
-        toppingBack: '&' //topping-back
+        onToppingback: '&' //topping-back
     },
 
     template: `<div>
-                    <button ng-click="$ctrl.toppingSelect(topping)" type="button" class="btn btn-large" >
+                    <button ng-click="$ctrl.toppingSelect($ctrl.topping)" type="button" class="btn btn-large" >
                         {{$ctrl.topping}}
                      </button>
                 </div><br>

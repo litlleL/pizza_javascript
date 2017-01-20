@@ -6,6 +6,7 @@ export class PizzaGameController {
         this.pool = []
         this.allRecipes = this.getAllPizzas();
         this.allToppings = this.getAllToppings();
+        this.pizza = [];
 
     }
 
@@ -35,10 +36,23 @@ export class PizzaGameController {
     }
 
 
+
+    checkIfPizzaExist(str) {
+
+        let recipeDone = this.PizzaService.checkPizza(this.pizza)
+        if (recipeDone) {
+            this.pool.splice(recipeDone.id, 1)
+        }
+    }
+
     displayChampignon(str) {
         console.log(str);
         this.action = str;
-        
+
+    }
+
+    addTopping(topping) {
+        this.pizza.push(topping);
     }
 
 }

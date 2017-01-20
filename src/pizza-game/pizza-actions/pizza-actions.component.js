@@ -13,8 +13,8 @@
 
      setAction(str) {
 
-         this.onChampignon({$event: str});
-         
+         this.onChampignon({ $event: str });
+
      }
 
  }
@@ -28,7 +28,8 @@
      template: `
         <div>
             <button ng-click="$ctrl.setAction('Champ!')" type="button">
-            <span>CHAMPIGNON</span>
+            
+            <span>ENVOYER</span>
         </button>
         </div>
     `,

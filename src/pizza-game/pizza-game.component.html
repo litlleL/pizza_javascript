@@ -12,7 +12,7 @@
         <pizza-making class="col-xs-4">
 
         </pizza-making>
-        <pizza-toppings class="col-xs-4" ng-repeat=" topping in $ctrl.allToppings track by $index " topping="topping " on-toppingselect="$ctrl.addToppings(topping) ">
+        <pizza-toppings class="col-xs-4" ng-repeat=" topping in $ctrl.allToppings track by $index " topping="topping " on-toppingback="$ctrl.addTopping($event)">
 
         </pizza-toppings>
         <pizza-recipes class="col-xs-4 " recipe-selected="$ctrl.recipie " recipe="recipe ">
@@ -20,7 +20,7 @@
         </pizza-recipes>
     </div>
     <div class="row ">
-        <pizza-actions class="col-xs-10 ">
+        <pizza-actions class="col-xs-10 " on-champignon="$ctrl.checkIfPizzaExist($event)">
 
         </pizza-actions>
         <pizza-score class="col-xs-2 ">
