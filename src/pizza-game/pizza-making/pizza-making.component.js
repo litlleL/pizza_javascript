@@ -14,11 +14,11 @@
      }
 
  }
- 
+
  export const PizzaMaking = {
      bindings: {
-         action: '<',
+         pizzat: '<',
      },
-     template: '<div>{{ $ctrl.action }}</div>',
+     template: '<p> {{ $ctrl.pizzat }}</p>',
      controller: PizzaMakingController
  }

@@ -9,8 +9,16 @@
     </div>
 
     <div class="row">
-        <pizza-making class="col-xs-4">
-        </pizza-making>
+        <div class="col-xs-4">
+            <ul>
+                <li>
+                    <pizza-making ng-repeat=" pizzat in $ctrl.pizza track by $index" pizzat="pizzat"> </pizza-making>
+                </li>
+            </ul>
+        </div>
+
+
+
         <pizza-toppings class="col-xs-4" ng-repeat=" topping in $ctrl.allToppings track by $index " topping="topping " on-toppingback="$ctrl.addTopping($event)">
 
         </pizza-toppings>
