@@ -1,25 +1,24 @@
 export class PizzaGameController {
-    constructor(PizzaService, $timeout) {
+    constructor(PizzaService, $timeout, $interval) {
         this.PizzaService = PizzaService
         this.$timeout = $timeout
+        this.$interval = $interval
         this.pool = []
         this.allRecipes = this.getAllPizzas();
+        this.allToppings = this.getAllToppings();
 
     }
 
+
     start() {
-        console.log('ici')
-        const intervalId = setInterval(() => {
+        const intervalId = this.$interval(() => {
             let index = Math.floor(Math.random() * this.allRecipes.length)
-            console.log(index)
             const recipeToAdd = this.PizzaService.getRecipe(index)
             this.pool.push(recipeToAdd)
-
-            console.table(this.pool)
             if (this.pool.length >= 10) {
-                clearInterval(intervalId)
+                this.$interval.cancel(intervalId)
             }
-        }, 1000)
+        }, 5000)
     }
 
     displayRecepicies(pizza) {

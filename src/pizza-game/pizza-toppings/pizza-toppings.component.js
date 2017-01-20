@@ -1,32 +1,28 @@
-class PizzaToppingsController{
-    constructor(){
+class PizzaToppingsController {
+    constructor() {
 
     }
-    $onInit(){
-        
-        
+    $onInit() {
+
+
     }
-    $onChanges(){
-        // if (changes.listToppings && changes.listToppings.currentValue) {
-        //   this.toppings = angular.copy(changes.listToppings.currentValue);  
-        // } 
-    }
-    toppingSelect(topping){
-        this.topping=angular.copy(topping);
-        this.toppingBack({ $event:this.topping});
+
+    toppingSelect(topping) {
+        this.toppingBack({ $event: this.topping });
     }
 }
 
-export const PizzaToppings ={
-    bindings:{
-       allToppings:'<',
-       toppingBack:'&'//topping-back
+export const PizzaToppings = {
+    bindings: {
+        topping: '<',
+        toppingBack: '&' //topping-back
     },
 
-    template : `  <button ng-repeat="topping in $ctrl.allToppings track by $index" ng-click="$ctrl.toppingSelect(topping)" type="button" >
+    template: `<div>
+                    <button ng-click="$ctrl.toppingSelect(topping)" type="button" class="btn btn-large" >
+                        {{$ctrl.topping}}
                      </button>
-                     <pre>
-                        
-                     </pre>`,
+                </div><br>
+                     `,
     controller: PizzaToppingsController
 }
