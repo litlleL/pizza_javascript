@@ -1,14 +1,17 @@
 <div class="container">
 
     <div class="row">
+
         <pizza-pool class="col-xs-2" ng-repeat="pizza in $ctrl.pool track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
         </pizza-pool>
+
         <pizza-timer class="col-xs-2">
 
         </pizza-timer>
     </div>
 
     <div class="row">
+
         <div class="col-xs-4">
             <ul>
                 <li>
@@ -16,9 +19,6 @@
                 </li>
             </ul>
         </div>
-
-
-
         <pizza-toppings class="col-xs-4" ng-repeat=" topping in $ctrl.allToppings track by $index " topping="topping " on-toppingback="$ctrl.addTopping($event)">
 
         </pizza-toppings>
