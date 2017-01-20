@@ -38,7 +38,7 @@ export class PizzaService {
     }
 
     getRecipe(index) {
-        console.log(this.allPizzas[index + 1])
-        return this.allPizzas[index + 1]
+        console.log(this.allPizzas[index])
+        return this.allPizzas[index]
     }
 }
