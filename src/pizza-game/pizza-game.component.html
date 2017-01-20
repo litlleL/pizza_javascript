@@ -31,3 +31,14 @@
 
     <button ng-click="$ctrl.start()">START</button>
 </div>
+
+<pizza-recipes recipeSelected="$ctrl.recipie" recipe="recipe">
+
+{{$ctrl.recipie.name}}
+
+</pizza-recipes>
+
+
+<pizza-making action="$ctrl.action"></pizza-making>
+
+<pizza-actions  on-champignon="$ctrl.displayChampignon($event)"></pizza-actions>

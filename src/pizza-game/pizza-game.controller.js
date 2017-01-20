@@ -26,7 +26,6 @@ export class PizzaGameController {
         this.recipie = pizza
     }
 
-
     getAllPizzas() {
         return this.PizzaService.getAllRecipes()
     }
@@ -34,6 +33,13 @@ export class PizzaGameController {
     getAllToppings() {
         return this.PizzaService.getAllToppings()
 
+    }
+
+
+    displayChampignon(str) {
+        console.log(str);
+        this.action = str;
+        
     }
 
 }
