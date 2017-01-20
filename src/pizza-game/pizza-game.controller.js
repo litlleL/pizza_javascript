@@ -14,19 +14,6 @@ export class PizzaGameController {
             }
         ]
 
-        this.allRecepies = [{
-                name: "Margharita",
-                toppings: ["pate", "tomato", "ham", "fromaggio"]
-            },
-            {
-                name: "Regina",
-                toppings: ["pate", "tomato", "mushrooms"]
-            },
-            {
-                name: "Quattro fromagi",
-                toppings: ["pate", "parmeggiano", "cheese1", "cheeese 2"]
-            }
-        ]
     }
 
     $onInit() {
@@ -35,7 +22,7 @@ export class PizzaGameController {
             toppings: ["pate", "tomato", "ham", "fromaggio"]
         }]
 
-        this.toppingsList = [{
+        this.allToppings = [{
             name: "Regina",
             toppings: ["pate", "tomato", "mushrooms"]
         }]
