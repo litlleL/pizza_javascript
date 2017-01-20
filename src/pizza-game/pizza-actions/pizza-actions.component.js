@@ -13,7 +13,7 @@
 
      setAction() {
 
-         this.onChampignon({});
+         this.onSend({});
 
      }
 
@@ -22,7 +22,7 @@
  export const PizzaActions = {
 
      bindings: {
-         onChampignon: '&'
+         onSend: '&'
      },
 
      template: `
