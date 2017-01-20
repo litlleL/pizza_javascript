@@ -1,16 +1,22 @@
  class PizzaPoolController {
 
-     constructor() {}
+     constructor() {
+
+     }
 
      $onChanges(changes) {
 
      }
+
+
  }
 
  export const PizzaPool = {
 
+
      template: `
-        <div>ceci sera le pool de PizzaPool</div>
+        <div >ceci sera le pool de PizzaPool</div>
     `,
+
      controller: PizzaPoolController
  }
