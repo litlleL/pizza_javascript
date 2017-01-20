@@ -1,13 +1,13 @@
-class PizzaRecipes{
-    constructor(){}
-    $onInit(){
-        this.pizza={
+class PizzaRecipesController {
+    constructor() {}
+    $onInit() {
+        this.pizza = {
             "name": "Margarita",
-            "toppings":["ham","chesses","Ham"]
+            "toppings": ["ham", "chesses", "Ham"]
         }
     }
 }
 
-export const PizzaRecipes={
+export const PizzaRecipes = {
     template: require('./pizza-recipes.component.html')
 }
