@@ -1,9 +1,9 @@
-<pizza-pool class="col-xs-3" ng-repeat=" pizza in $ctrl.pizzas track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
+<pizza-pool class="col-xs-3" ng-repeat=" pizza in $ctrl.pizzasPool track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
 
 
 </pizza-pool>
 
 <pizza-recipes recipeSelect="$ctrl.recipie">
 
-
+    {{$ctrl.recipie.name}}
 </pizza-recipes>
