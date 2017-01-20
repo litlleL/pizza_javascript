@@ -4,7 +4,6 @@
 
      }
 
-
      $onChanges(changes) {
          this.name = changes.pizza.currentValue.name;
      }
