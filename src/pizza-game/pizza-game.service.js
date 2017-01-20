@@ -1,6 +1,5 @@
 export class PizzaService {
     constructor($timeout) {
-        this.$timeout = $timeout
         this.allPizzas = [
             {
                 "id": 1,
@@ -30,11 +29,15 @@ export class PizzaService {
         this.allToppings = ["mayo", "eeg", "onions", "creme fraiche", "pate", "tomato", "ham", "fromaggio", "parmeggiano", "cheese1", "cheeese 2", "beets", "potato"]
     }
 
-    getAllPizzas() {
+    getAllRecipes() {
         return this.allPizzas
     }
 
     getAllToppings() {
         return this.allToppings
+    }
+
+    getRecipe(index) {
+        return this.getRecipe.find(index)
     }
 }
