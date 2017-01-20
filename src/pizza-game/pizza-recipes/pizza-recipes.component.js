@@ -2,12 +2,14 @@
 class PizzaRecipesController{
     constructor(){}
     $onInit(){
-        //this.recipe=recipeSelect;
+        
+        
     }
 
     $onChanges(changes){
-         this.recipe= changes.recipeSelected;
-         console.log( this.recipe)
+        if (changes.recipeSelected && changes.recipeSelected.currentValue) {
+          this.recipe = angular.copy(changes.recipeSelected.currentValue);  
+        }         
     }
 }
 
