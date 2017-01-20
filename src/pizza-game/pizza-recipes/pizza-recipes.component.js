@@ -18,7 +18,9 @@ export const PizzaRecipes= {
         recipeSelected: '<'
   
     },
-    template: require('./pizza-recipes.component.html'),
+     template: require('./pizza-recipes.component.html'),
     controller: PizzaRecipesController
 
 }
+
+                
