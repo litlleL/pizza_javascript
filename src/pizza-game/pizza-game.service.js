@@ -19,14 +19,10 @@ export class PizzaService {
                 "id": 4,
                 "name": "Brazil",
                 "toppings": ["pate", "potato", "beets", "ham"]
-            },
-            {
-                "id": 5,
-                "name": "germany",
-                "toppings": ["pate", "mayo", "eeg", "onions", "creme fraiche"]
             }
+
         ]
-        this.allToppings = ["mayo", "eeg", "onions", "creme fraiche", "pate", "tomato", "ham", "fromaggio", "parmeggiano", "cheese1", "cheeese 2", "beets", "potato"]
+        this.allToppings = ["pate", "tomato", "ham", "fromaggio", "parmeggiano", "cheese1", "cheeese 2", "beets", "potato"]
     }
 
     getAllRecipes() {

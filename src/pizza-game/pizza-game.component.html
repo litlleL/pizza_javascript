@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="row">
-        <pizza-pool class="col-xs-1" ng-repeat="pizza in $ctrl.pool track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
+        <pizza-pool class="col-xs-2" ng-repeat="pizza in $ctrl.pool track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
         </pizza-pool>
         <pizza-timer class="col-xs-2">
 
@@ -12,21 +12,21 @@
         <pizza-making class="col-xs-4">
 
         </pizza-making>
-        <pizza-toppings class="col-xs-1" ng-repeat=" topping in $ctrl.allToppings track by $index" topping="topping" on-toppingselect="$ctrl.addToppings(topping)">
+        <pizza-toppings class="col-xs-4" ng-repeat=" topping in $ctrl.allToppings track by $index " topping="topping " on-toppingselect="$ctrl.addToppings(topping) ">
 
         </pizza-toppings>
-        <pizza-recipes class="col-xs-4" recipe-selected="$ctrl.recipie" recipe="recipe">
+        <pizza-recipes class="col-xs-4 " recipe-selected="$ctrl.recipie " recipe="recipe ">
 
         </pizza-recipes>
     </div>
-    <div class="row">
-        <pizza-actions class="col-xs-10">
+    <div class="row ">
+        <pizza-actions class="col-xs-10 ">
 
         </pizza-actions>
-        <pizza-score class="col-xs-2">
+        <pizza-score class="col-xs-2 ">
 
         </pizza-score>
     </div>
 
-    <button ng-click="$ctrl.start()">START</button>
+    <button ng-click="$ctrl.start() ">START</button>
 </div>
