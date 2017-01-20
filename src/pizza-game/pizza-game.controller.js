@@ -1,49 +1,39 @@
 export class PizzaGameController {
-    constructor() {
-        this.allPizzas = [{
-                name: 'Margharita',
-                toppings: ["pate", "tomato", "ham", "fromaggio"]
-            },
-            {
-                name: 'Peperoni',
-                toppings: ["pate", "tomato", "ham", "fromaggio"]
-            },
-            {
-                name: 'Reine',
-                toppings: ["pate", "tomato", "ham", "fromaggio"]
+    constructor(PizzaService, $timeout) {
+        this.PizzaService = PizzaService
+        this.$timeout = $timeout
+        this.pool = []
+        this.allRecipes = this.getAllPizzas();
+
+    }
+
+    start() {
+        console.log('ici')
+        const intervalId = setInterval(() => {
+            let index = Math.floor(Math.random() * this.allRecipes.length)
+            console.log(index)
+            const recipeToAdd = this.PizzaService.getRecipe(index)
+            this.pool.push(recipeToAdd)
+
+            console.table(this.pool)
+            if (this.pool.length >= 10) {
+                clearInterval(intervalId)
             }
-        ]
-
-    }
-
-    $onInit() {
-        this.pizzasPool = [{
-            name: 'Margharita',
-            toppings: ["pate", "tomato", "ham", "fromaggio"]
-        }, {
-            name: 'Margharita',
-            toppings: ["pate", "tomato", "ham", "fromaggio"]
-        }, {
-            name: "Regina",
-            toppings: ["pate", "tomato", "mushrooms"]
-        }]
-
-        this.allToppings = [{
-            name: "Regina",
-            toppings: ["pate", "tomato", "mushrooms"]
-        }]
-    }
-
-    start(time) {
-
+        }, 1000)
     }
 
     displayRecepicies(pizza) {
-        console.log(pizza)
         this.recipie = pizza
     }
 
-    addToppings(topping) {
-        console.log(topping)
+
+    getAllPizzas() {
+        return this.PizzaService.getAllRecipes()
     }
+
+    getAllToppings() {
+        return this.PizzaService.getAllToppings()
+
+    }
+
 }

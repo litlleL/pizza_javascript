@@ -1,1 +1,9 @@
-<div>{{recipe.name}}</div> 
+
+<div>
+    <pre>
+      {{$ctrl.recipe.name}}
+    <ul> 
+        <li ng-repeat ="topping in $ctrl.recipe.toppings">{{topping}}</li> 
+        </ul> 
+    </pre>
+</div>
