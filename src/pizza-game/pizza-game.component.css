@@ -1,0 +1,11 @@
+ul {
+    list-style: none;
+}
+
+ul li pizza-pool {
+    display: inline-flex;
+}
+
+ul li pizza-toppings {
+    display: inline-flex;
+}

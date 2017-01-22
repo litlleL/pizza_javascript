@@ -36,16 +36,20 @@ export class PizzaGameController {
     }
 
 
-
     checkIfPizzaExist() {
-
+        console.log('checkIfPizzaExist Pizza : ', this.pizza)
         let recipeDone = this.PizzaService.checkPizza(this.pizza)
-        console.log(recipeDone)
-        if (recipeDone) {
-            this.pool.splice(recipeDone.id, 1)
+        console.log('checkIfPizzaExist :', recipeDone)
+        if (this.pool.includes(recipeDone)) {
+            console.log('pizza to remove from pool :', recipeDone.name)
+            this.pool = this.pool.filter(pizza => pizza !== recipeDone)
+            console.table(this.pool)
         }
+        this.deletePizza()
+    }
 
-        this.pizza = [];
+    deletePizza() {
+        this.pizza = []
     }
 
     addTopping(topping) {
