@@ -62,6 +62,7 @@ export class PizzaService {
             pizza.forEach(topping => {
                 console.log('checking ', topping)
                 if (recipe.toppings.includes(topping)) {
+
                     console.log('topping deleted : ', topping)
                     recipeToppings.splice(topping, 1)
                     pizzaToppings.splice(topping, 1)
@@ -73,6 +74,7 @@ export class PizzaService {
                 // console.log('topping : ', topping)
                 // console.log('boolValue : ', boolValue)
                 // }, true)
+
         }
     }
 }
