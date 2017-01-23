@@ -1,4 +1,5 @@
 export class PizzaGameController {
+    
     constructor(PizzaService, $timeout, $interval) {
         this.PizzaService = PizzaService
         this.$timeout = $timeout
@@ -6,14 +7,69 @@ export class PizzaGameController {
     }
 
     $onInit() {
+
         this.intervalId = {}
         this.pool = []
         this.pizza = []
         this.score = 0
         this.message = ''
+        this.hover = []
         this.allRecipes = this.PizzaService.getAllRecipes()
         this.allToppings = this.PizzaService.getAllToppings()
     }
+
+    /**
+     * Pizza content Controller
+     */
+
+    checkIfPizzaExist() {
+        const POINTS_LOSE_INEXISTANT_PIZZA_SEND = 100
+        const POINTS_LOSE_PIZZA_NOT_IN_POOL     = 50
+        const POINTS_LOSE_PIZZA_DUMB            = 25
+        const POINTS_WIN_PIZZA_VALID            = 100
+        let recipeDone = this.PizzaService.checkPizza(this.pizza)
+        if(!angular.equals(recipeDone, {})){
+            let idx = this.pool.indexOf(recipeDone) 
+            if (idx !== -1) {
+                this.score += POINTS_WIN_PIZZA_VALID
+                this.pool.splice(idx, 1)
+                this.showAlert('Bonne pizza! + ', POINTS_WIN_PIZZA_VALID, ' points')
+            } else {
+                this.score -= POINTS_LOSE_PIZZA_NOT_IN_POOL
+                this.showAlert('Cette pizza n\'est pas demandé... -', POINTS_LOSE_PIZZA_NOT_IN_POOL, ' points')
+            }
+            this.pizza = []
+        } else {
+            this.score -= POINTS_LOSE_INEXISTANT_PIZZA_SEND
+            this.showAlert('Aucune pizza ne correspond avec ce que tu as fait! ', POINTS_LOSE_INEXISTANT_PIZZA_SEND, ' points')
+            this.pizza = []
+        }
+    }
+
+    addTopping(topping) {
+        this.pizza.push(topping)
+    }
+
+    // TODO: Four qui prend les pizzas valide et les fait cuire. Impl d'un état (0: vide, 1: remplir, 2: valide, 3:cru, 4:mi-cuite, 5:cuite, 6:vendu)
+    hoverPizza(pizza) {
+        if(this.hover >= 4) {
+            this.showAlert('Le four est déjà plein!')
+        } else {
+            this.hover.push(pizza)
+        }
+    }
+
+    deletePizza() {
+        if(!angular.equals(this.pizza, [])){
+            this.score -= POINTS_LOSE_PIZZA_DUMB
+            this.showAlert('Une pizza de plus à la poubelle! ', POINTS_LOSE_PIZZA_DUMB, ' points')
+            this.pizza = []
+        }
+    }
+
+    /**
+     * Game content controller
+     */
 
     start() {
         const intervalId = this.$interval(() => {
@@ -30,42 +86,6 @@ export class PizzaGameController {
         }, 1000)
     }
 
-    displayRecipe(recipe) {
-        this.recipe = recipe
-    }
-
-    checkIfPizzaExist() {
-        let recipeDone = this.PizzaService.checkPizza(this.pizza)
-        if(!angular.equals(recipeDone, {})){
-            let idx = this.pool.indexOf(recipeDone) 
-            if (idx !== -1) {
-                this.score += 100
-                this.pool.splice(idx, 1)
-                this.showAlert('Bonne pizza! + 100 points')
-            } else {
-                this.score -= 50
-                this.showAlert('Cette pizza n\'est pas demandé... -50 points')
-            }
-            this.pizza = []
-        } else {
-            this.showAlert('Aucune pizza ne correspond avec ce que tu as fait! -100 points')
-            this.score -= 100
-            this.pizza = []
-        }
-    }
-
-    addTopping(topping) {
-        this.pizza.push(topping)
-    }
-
-    deletePizza() {
-        if(!angular.equals(this.pizza, [])){
-            this.score -= 20
-            this.showAlert('Une pizza de plus à la poubelle! -20 points')
-            this.pizza = []
-        }
-    }
-
     showAlert(message) {
         this.message = message
         this.$timeout(message => {
@@ -73,12 +93,18 @@ export class PizzaGameController {
         }, 2000)
     }
 
+    displayRecipe(recipe) {
+        this.recipe = recipe
+    }
+
     gameOver() {
         window.alert('GAME OVER!... Ton score est de : ' + this.score)
+        this.pool.forEach(element => {
+            this.$timeout.cancel(element.timeout)
+        });
         this.pool.length = 0
         this.pizza = []
         this.score = 0
         this.message = ''
-        
     }
 }
