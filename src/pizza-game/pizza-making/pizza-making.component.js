@@ -18,7 +18,7 @@
         <div class="col-xs-4">
             <h2>Pizza Actuel</h2>
             <ul>
-                <li ng-repeat="topping in $ctrl.pizza">{{ topping }}</li>
+                <li ng-repeat="topping in $ctrl.pizza track by $index">{{ topping }}</li>
             </ul>
         </div>`,
      controller: PizzaMakingController
