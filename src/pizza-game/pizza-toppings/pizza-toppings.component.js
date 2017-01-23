@@ -1,30 +1,25 @@
 class PizzaToppingsController {
-    constructor() {
-
-    }
-    $onInit() {
-
-
-    }
+    constructor() {}
 
     toppingSelect(topping) {
-
-        this.onToppingback({ $event: topping });
-
+        this.onToppingback({ $event: topping })
     }
 }
 
 export const PizzaToppings = {
     bindings: {
-        topping: '<',
+        toppings: '<',
         onToppingback: '&' //topping-back
     },
 
-    template: `<div>
-                    <button ng-click="$ctrl.toppingSelect($ctrl.topping)" type="button" class="btn btn-large" >
-                        {{$ctrl.topping}}
+    template: `<div class="col-xs-6">
+                    <button ng-repeat="topping in $ctrl.toppings track by $index"
+                        ng-click="$ctrl.toppingSelect(topping)"
+                        type="button"
+                        class="btn btn-large">
+                        {{topping}}
                      </button>
-                </div><br>
-                     `,
+                </div>
+                `,
     controller: PizzaToppingsController
 }

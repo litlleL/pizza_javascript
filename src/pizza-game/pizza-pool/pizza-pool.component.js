@@ -1,31 +1,34 @@
  class PizzaPoolController {
+     constructor() {}
 
-     constructor() {
-
+     $onInit() {
+         this.pizza = []
      }
 
      $onChanges(changes) {
-         this.name = changes.pizza.currentValue.name;
+        this.pizzas = changes.pizzas.currentValue
      }
 
-     recepiesSelect() {
-         this.onRecepiciesselect()
+     recipeSelect(pizza) {
+         this.onRecipeClick({ $event: pizza })
      }
  }
 
  export const PizzaPool = {
      bindings: {
-         pizza: '<',
-         onRecepiciesselect: '&'
+         pizzas: '<',
+         onRecipeClick: '&'
      },
 
      template: `
-        <div >
-            <button ng-click="$ctrl.recepiesSelect()" type="button" class="btn btn-lg " >
-                {{ $ctrl.name }}
-            </button>
-        </div>
+            <div class="col-xs-10">
+                <button ng-repeat="pizza in $ctrl.pizzas track by $index"
+                    ng-click="$ctrl.recipeSelect(pizza)"
+                    type="button" 
+                    class="btn btn-lg ">
+                    {{ pizza.name }}
+                </button>
+            </div>
     `,
-
      controller: PizzaPoolController
  }

@@ -1,50 +1,12 @@
 <div class="container">
-
     <div class="row">
-        <div class="col-xs-10">
-            <ul>
-                <li>
-                    <pizza-pool ng-repeat="pizza in $ctrl.pool track by $index" pizza="pizza" on-recepiciesselect="$ctrl.displayRecepicies(pizza)">
-                    </pizza-pool>
-                </li>
-            </ul>
-        </div>
-        <pizza-timer class="col-xs-2">
-        </pizza-timer>
-    </div>
-
-    <div class="row">
-
-        <div class="col-xs-4">
-            <ul>
-                <li>
-                    <pizza-making ng-repeat=" pizzat in $ctrl.pizza track by $index" pizzat="pizzat"> </pizza-making>
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-xs-6">
-            <ul>
-                <li>
-                    <pizza-toppings ng-repeat=" topping in $ctrl.allToppings track by $index " topping="topping " on-toppingback="$ctrl.addTopping($event)">
-                    </pizza-toppings>
-                </li>
-            </ul>
-        </div>
-
-        <pizza-recipes class="col-xs-2 " recipe-selected="$ctrl.recipie " recipe="recipe ">
-
-        </pizza-recipes>
+        <pizza-pool pizzas="$ctrl.pool" on-recipe-click="$ctrl.displayRecipe($event)"></pizza-pool>
+        <pizza-making pizza="$ctrl.pizza"> </pizza-making>
+        <pizza-toppings toppings="$ctrl.allToppings" on-toppingback="$ctrl.addTopping($event)"></pizza-toppings>
+        <pizza-recipe recipe="$ctrl.recipe"></pizza-recipe>
     </div>
 
     <div class="row ">
-        <pizza-actions class="col-xs-10 " on-send="$ctrl.checkIfPizzaExist()">
-
-        </pizza-actions>
-        <pizza-score class="col-xs-2 ">
-
-        </pizza-score>
+        <pizza-actions on-start="$ctrl.start()" on-send="$ctrl.checkIfPizzaExist()" on-delete="$ctrl.deletePizza()"></pizza-actions>
     </div>
-
-    <button ng-click="$ctrl.start() ">START</button>
 </div>

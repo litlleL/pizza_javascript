@@ -3,13 +3,14 @@ export class PizzaGameController {
         this.PizzaService = PizzaService
         this.$timeout = $timeout
         this.$interval = $interval
-        this.pool = []
-        this.allRecipes = this.getAllPizzas();
-        this.allToppings = this.getAllToppings();
-        this.pizza = [];
-
     }
 
+    $onInit() {
+        this.pool = []
+        this.pizza = []
+        this.allRecipes = this.PizzaService.getAllRecipes()
+        this.allToppings = this.PizzaService.getAllToppings()
+    }
 
     start() {
         const intervalId = this.$interval(() => {
@@ -22,38 +23,25 @@ export class PizzaGameController {
         }, 5000)
     }
 
-    displayRecepicies(pizza) {
-        this.recipie = pizza
+    displayRecipe(recipe) {
+        this.recipe = recipe
     }
-
-    getAllPizzas() {
-        return this.PizzaService.getAllRecipes()
-    }
-
-    getAllToppings() {
-        return this.PizzaService.getAllToppings()
-
-    }
-
 
     checkIfPizzaExist() {
-        console.log('checkIfPizzaExist Pizza : ', this.pizza)
         let recipeDone = this.PizzaService.checkPizza(this.pizza)
-        console.log('checkIfPizzaExist :', recipeDone)
-        if (this.pool.includes(recipeDone)) {
-            console.log('pizza to remove from pool :', recipeDone.name)
-            this.pool = this.pool.filter(pizza => pizza !== recipeDone)
-            console.table(this.pool)
+        let idx = this.pool.indexOf(recipeDone) 
+        if (idx !== -1) {
+            console.log('index of ', recipeDone, ' in the pool: ', idx)
+            this.pool.splice(idx, 1)
         }
         this.deletePizza()
+    }
+
+    addTopping(topping) {
+        this.pizza.push(topping)
     }
 
     deletePizza() {
         this.pizza = []
     }
-
-    addTopping(topping) {
-        this.pizza.push(topping);
-    }
-
 }
