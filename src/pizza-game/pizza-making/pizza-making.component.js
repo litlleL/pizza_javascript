@@ -1,25 +1,33 @@
- class PizzaMakingController {
-     constructor() {}
+class PizzaMakingcontroller {
+    constructor() {}
 
-     $onChanges(changes) {
-         if(this.pizza) {
-            this.pizza = changes.pizza.currentValue
-         } else {             
-            this.pizza = []
-         }
-     }
- }
+    $onInit() {
+        this.pizza = []
+    }
 
- export const PizzaMaking = {
-     bindings: {
-         pizza: '<'
-     },
-     template: `
-        <div class="col-xs-4">
-            <h2>Pizza Actuel</h2>
-            <ul>
-                <li ng-repeat="topping in $ctrl.pizza track by $index">{{ topping }}</li>
-            </ul>
-        </div>`,
-     controller: PizzaMakingController
- }
+    $onChanges(changes) {
+        if(this.toppings){
+            this.toppings = changes.toppings.currentValue
+        } else {
+            this.toppings = []
+        }
+    }
+
+    addTopping(topping) {
+        this.pizza.push(topping)
+    }
+}
+
+export const PizzaMaking = {
+    bindings: {
+        onPizza: '&',
+        toppings: '<'
+    },
+    template: `
+        <div>
+            <pizza-working pizza="$ctrl.pizza"></pizza-working>
+            <pizza-toppings toppings="$ctrl.toppings" on-add-topping="$ctrl.addTopping($event)"></pizza-toppings>
+        </div>
+    `,
+    constructor: PizzaMakingcontroller
+}
