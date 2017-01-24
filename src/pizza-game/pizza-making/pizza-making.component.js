@@ -17,7 +17,7 @@ export const PizzaMaking = {
 
     template: `
         <div>
-            <pizza-working pizza="$ctrl.pizza"></pizza-working>
+            <pizza-working actual-pizza="$ctrl.pizza"></pizza-working>
             <pizza-toppings on-topping-click="$ctrl.addTopping($event)"></pizza-toppings>
         </div>
     `,

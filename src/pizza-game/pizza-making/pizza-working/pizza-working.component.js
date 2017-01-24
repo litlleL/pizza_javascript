@@ -2,9 +2,9 @@
      constructor() {}
 
      $onChanges(changes) {
-         console.log('PizzaWorkingController $onChange() : ', changes.pizza.currentValue)
+         console.log('PizzaWorkingController $onChange() : ', changes.actualPizza.currentValue)
          if(!angular.equals(this.pizza, [])) {
-            this.pizza = changes.pizza.currentValue
+            this.pizza = changes.actualPizza.currentValue
          } else {             
             this.pizza = []
          }
@@ -13,7 +13,7 @@
 
  export const PizzaWorking = {
      bindings: {
-         pizza: '<'
+         actualPizza: '<'
      },
      template: `
         <div class="col-xs-4">
