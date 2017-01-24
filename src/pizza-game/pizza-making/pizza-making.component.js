@@ -1,14 +1,11 @@
 class PizzaMakingController {
-    constructor(PizzaService) {
-        this.PizzaService = PizzaService
-    }
+    constructor() {}
 
     $onInit() {
         this.pizza = []
     }
 
     addTopping(topping) {
-        console.log('PizzaMakingController addTopping() : ', topping)
         this.pizza.push(topping)
     }
 }

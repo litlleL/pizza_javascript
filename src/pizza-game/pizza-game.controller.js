@@ -1,7 +1,7 @@
 export class PizzaGameController {
     
-    constructor(PizzaService, $timeout, $interval) {
-        this.PizzaService = PizzaService
+    constructor(GameService, $timeout, $interval) {
+        this.GameService = GameService
         this.$timeout = $timeout
         this.$interval = $interval
     }
@@ -13,7 +13,7 @@ export class PizzaGameController {
         this.score = 0
         this.message = ''
         this.hover = []
-        this.allRecipes = this.PizzaService.getAllRecipes()
+        this.allRecipes = this.GameService.getAllRecipes()
     }
 
     /**
@@ -25,7 +25,7 @@ export class PizzaGameController {
         const POINTS_LOSE_PIZZA_NOT_IN_POOL     = 50
         const POINTS_LOSE_PIZZA_DUMB            = 25
         const POINTS_WIN_PIZZA_VALID            = 100
-        let recipeDone = this.PizzaService.checkPizza(this.pizza)
+        let recipeDone = this.GameService.checkPizza(this.pizza)
         if(!angular.equals(recipeDone, {})){
             let idx = this.pool.indexOf(recipeDone) 
             if (idx !== -1) {
@@ -68,7 +68,7 @@ export class PizzaGameController {
     start() {
         const intervalId = this.$interval(() => {
             let index = Math.floor(Math.random() * this.allRecipes.length)
-            const recipeToAdd = this.PizzaService.getRecipe(index)
+            const recipeToAdd = this.GameService.getRecipe(index)
             this.pool.push({
                 toppings: recipeToAdd,
                 timeout: this.$timeout(() => {

@@ -1,6 +1,6 @@
-export class PizzaService {
+export class GameService {
     constructor() {
-        this.allPizzas = [{
+        this.allRecipes = [{
                 "id": 1,
                 "name": "Margharita",
                 "toppings": ["pate", "tomato", "ham", "fromaggio"]
@@ -28,17 +28,16 @@ export class PizzaService {
         ]}
 
     getAllRecipes() {
-        return this.allPizzas
+        return this.allRecipes
     }
 
     getRecipe(index) {
-        console.log(this.allPizzas[index])
-        return this.allPizzas[index]
+        return this.allRecipes[index]
     }
 
     checkPizza(pizza) {
         let recipeValid = {}
-        this.allPizzas.forEach(recipe => {
+        this.allRecipes.forEach(recipe => {
             if (this.isRecipeCompliant(recipe, pizza)) {
                 recipeValid = recipe
             }

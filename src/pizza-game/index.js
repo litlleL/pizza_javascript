@@ -6,7 +6,7 @@ import { PizzaRecipe } from './pizza-recipe/pizza-recipe.component'
 import { PizzaActions } from './pizza-actions/pizza-actions.component'
 import PizzaModule from './pizza-making/pizza-module'
 
-import { PizzaService } from './pizza-game.service'
+import { GameService } from './pizza-game.service'
 
 export default angular.module('PizzaGame', [
     PizzaModule
@@ -17,6 +17,6 @@ export default angular.module('PizzaGame', [
     .component('pizzaRecipe', PizzaRecipe)
     .component('pizzaActions', PizzaActions)
 
-    .service('PizzaService', PizzaService)
+    .service('GameService', GameService)
 
 .name

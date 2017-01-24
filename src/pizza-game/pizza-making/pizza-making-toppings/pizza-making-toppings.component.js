@@ -8,7 +8,6 @@ class PizzaToppingsController {
     }
 
     toppingSelected(topping) {
-        console.log('PizzaToppingsController toppingSelected() : ', topping)
         this.onToppingClick({ $event: topping })
     }
 }
