@@ -1,7 +1,6 @@
-class PizzaMakingcontroller {
-    constructor(PizzaService, ToppingsService) {
+class PizzaMakingController {
+    constructor(PizzaService) {
         this.PizzaService = PizzaService
-        this.ToppingsService = ToppingsService
     }
 
     $onInit() {
@@ -22,5 +21,5 @@ export const PizzaMaking = {
             <pizza-toppings on-topping-click="$ctrl.addTopping($event)"></pizza-toppings>
         </div>
     `,
-    constructor: PizzaMakingcontroller
+    controller: PizzaMakingController
 }

@@ -15,7 +15,7 @@ class PizzaToppingsController {
 
 export const PizzaToppings = {
     bindings: {
-        onToppingClick: '&' //topping-back
+        onToppingClick: '&'
     },
 
     template: `<div class="col-xs-6">

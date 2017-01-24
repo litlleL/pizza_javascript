@@ -10,7 +10,6 @@ export class PizzaGameController {
 
         this.intervalId = {}
         this.pool = []
-        this.pizza = []
         this.score = 0
         this.message = ''
         this.hover = []
@@ -43,10 +42,6 @@ export class PizzaGameController {
             this.showAlert('Aucune pizza ne correspond avec ce que tu as fait! ', POINTS_LOSE_INEXISTANT_PIZZA_SEND, ' points')
             this.pizza = []
         }
-    }
-
-    addTopping(topping) {
-        this.pizza.push(topping)
     }
 
     // TODO: Four qui prend les pizzas valide et les fait cuire. Impl d'un état (0: vide, 1: remplir, 2: valide, 3:cru, 4:mi-cuite, 5:cuite, 6:vendu)
