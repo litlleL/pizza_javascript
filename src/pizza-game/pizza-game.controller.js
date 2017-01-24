@@ -15,7 +15,6 @@ export class PizzaGameController {
         this.message = ''
         this.hover = []
         this.allRecipes = this.PizzaService.getAllRecipes()
-        this.allToppings = this.PizzaService.getAllToppings()
     }
 
     /**

@@ -4,9 +4,10 @@ import { PizzaMaking } from './pizza-making.component'
 import { PizzaWorking } from './pizza-working/pizza-working.component'
 import { PizzaToppings } from './pizza-toppings/pizza-toppings.component'
 
-import { PizzaMakingService } from './pizza-making.service'
+import { PizzaService } from './pizza.service'
+import { ToppingsService } from './toppings.service'
 
-export default angular.module('pizzaMaking', [
+export default angular.module('PizzaModule', [
 
 ])
 
@@ -14,6 +15,7 @@ export default angular.module('pizzaMaking', [
     .component('pizzaWorking', PizzaWorking)
     .component('pizzaToppings', PizzaToppings)
 
-    .service('pizzaMakingService', PizzaMakingService)
+    .service('PizzaService', PizzaService)
+    .service('ToppingsService', ToppingsService)
 
 .name

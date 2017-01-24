@@ -2,7 +2,8 @@
      constructor() {}
 
      $onChanges(changes) {
-         if(this.pizza) {
+         console.log('PizzaWorkingController $onChange() : ', changes.pizza.currentValue)
+         if(!angular.equals(this.pizza, [])) {
             this.pizza = changes.pizza.currentValue
          } else {             
             this.pizza = []

@@ -1,32 +1,25 @@
 class PizzaMakingcontroller {
-    constructor() {}
+    constructor(PizzaService, ToppingsService) {
+        this.PizzaService = PizzaService
+        this.ToppingsService = ToppingsService
+    }
 
     $onInit() {
         this.pizza = []
     }
 
-    $onChanges(changes) {
-        if(this.toppings){
-            this.toppings = changes.toppings.currentValue
-        } else {
-            this.toppings = []
-        }
-    }
-
     addTopping(topping) {
+        console.log('PizzaMakingController addTopping() : ', topping)
         this.pizza.push(topping)
     }
 }
 
 export const PizzaMaking = {
-    bindings: {
-        onPizza: '&',
-        toppings: '<'
-    },
+
     template: `
         <div>
             <pizza-working pizza="$ctrl.pizza"></pizza-working>
-            <pizza-toppings toppings="$ctrl.toppings" on-add-topping="$ctrl.addTopping($event)"></pizza-toppings>
+            <pizza-toppings on-topping-click="$ctrl.addTopping($event)"></pizza-toppings>
         </div>
     `,
     constructor: PizzaMakingcontroller
