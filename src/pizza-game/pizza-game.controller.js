@@ -1,9 +1,10 @@
 export class PizzaGameController {
     
-    constructor(GameService, $timeout, $interval) {
+    constructor(GameService, $timeout, $interval, $rootScope) {
         this.GameService = GameService
         this.$timeout = $timeout
         this.$interval = $interval
+        this.$rootScope = $rootScope
     }
 
     $onInit() {
@@ -12,14 +13,12 @@ export class PizzaGameController {
         this.pool = []
         this.score = 0
         this.message = ''
-        this.hover = []
         this.allRecipes = this.GameService.getAllRecipes()
     }
 
     /**
      * Pizza content Controller
      */
-
     checkIfPizzaExist() {
         const POINTS_LOSE_INEXISTANT_PIZZA_SEND = 100
         const POINTS_LOSE_PIZZA_NOT_IN_POOL     = 50
@@ -44,40 +43,27 @@ export class PizzaGameController {
         }
     }
 
-    // TODO: Four qui prend les pizzas valide et les fait cuire. Impl d'un état (0: vide, 1: remplir, 2: valide, 3:cru, 4:mi-cuite, 5:cuite, 6:vendu)
-    hoverPizza(pizza) {
-        if(this.hover >= 4) {
-            this.showAlert('Le four est déjà plein!')
-        } else {
-            this.hover.push(pizza)
-        }
-    }
-
-    deletePizza() {
-        if(!angular.equals(this.pizza, [])){
-            this.score -= POINTS_LOSE_PIZZA_DUMB
-            this.showAlert('Une pizza de plus à la poubelle! ', POINTS_LOSE_PIZZA_DUMB, ' points')
-            this.pizza = []
-        }
-    }
-
     /**
      * Game content controller
      */
-
     start() {
         const intervalId = this.$interval(() => {
             let index = Math.floor(Math.random() * this.allRecipes.length)
             const recipeToAdd = this.GameService.getRecipe(index)
-            this.pool.push({
+            this.$rootScope.$broadcast('newPizzaToDo', {
+                type: recipeToAdd.name,
                 toppings: recipeToAdd,
                 timeout: this.$timeout(() => {
                     this.$interval.cancel(intervalId),
                     this.gameOver()             
-                }, 3000)
+                }, 10000)
             })
             console.table(this.pool)
         }, 1000)
+    }
+
+    addRandomPizza(idx, $rootScope) {
+        
     }
 
     showAlert(message) {
@@ -85,10 +71,6 @@ export class PizzaGameController {
         this.$timeout(message => {
             this.message = ''
         }, 2000)
-    }
-
-    displayRecipe(recipe) {
-        this.recipe = recipe
     }
 
     gameOver() {

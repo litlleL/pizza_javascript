@@ -1,14 +1,4 @@
-class PizzaMakingController {
-    constructor() {}
-
-    $onInit() {
-        this.pizza = []
-    }
-
-    addTopping(topping) {
-        this.pizza.push(topping)
-    }
-}
+import { PizzaMakingController } from './pizza-making.controller.js'
 
 export const PizzaMaking = {
 
