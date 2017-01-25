@@ -1,4 +1,4 @@
-class PizzaRecipeController{
+class PizzaPoolDisplayController{
     constructor(){}
 
     $onInit() {
@@ -12,7 +12,7 @@ class PizzaRecipeController{
     }
 }
 
-export const PizzaRecipe = {
+export const PizzaPoolDisplay = {
      bindings: {
         recipe: '<'
     },
@@ -23,7 +23,7 @@ export const PizzaRecipe = {
                 <li ng-repeat ="topping in $ctrl.recipe.toppings">{{topping}}</li> 
             </ul>
         </div>`,
-    controller: PizzaRecipeController
+    controller: PizzaPoolDisplayController
 
 }
 

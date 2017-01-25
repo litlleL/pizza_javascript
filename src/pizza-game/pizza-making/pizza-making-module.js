@@ -12,7 +12,7 @@ export default angular.module('PizzaMakingModule', [
 
     .component('pizzaMaking', PizzaMaking)
     .component('pizzaMakingWorking', PizzaWorking)
-    .component('pizzaMakingToppings', PizzaWorking)
+    .component('pizzaMakingToppings', PizzaToppings)
     
     .service('ToppingsService', ToppingsService)
 

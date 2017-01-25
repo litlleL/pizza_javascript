@@ -1,4 +1,4 @@
- class PizzaPoolController {
+ class PizzaPoolRecipesController {
      constructor() {}
 
      $onInit() {
@@ -14,7 +14,7 @@
      }
  }
 
- export const PizzaPool = {
+ export const PizzaPoolRecipes = {
      bindings: {
          pizzas: '<',
          onRecipeClick: '&'
@@ -30,5 +30,5 @@
                 </button>
             </div>
     `,
-     controller: PizzaPoolController
+     controller: PizzaPoolRecipesController
  }
