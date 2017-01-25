@@ -1,20 +1,18 @@
 import angular from 'angular'
 
 import { PizzaGame } from './pizza-game.component'
-import { PizzaPool } from './pizza-pool/pizza-pool.component'
-import { PizzaRecipe } from './pizza-recipe/pizza-recipe.component'
 import { PizzaActions } from './pizza-actions/pizza-actions.component'
-import PizzaModule from './pizza-making/pizza-module'
+import PizzaMakingModule from './pizza-making/pizza-making-module'
+import PizzaPoolModule from './pizza-pool/pizza-pool-module'
 
 import { GameService } from './pizza-game.service'
 
 export default angular.module('PizzaGame', [
-    PizzaModule
+    PizzaMakingModule,
+    PizzaPoolModule
 ])
 
     .component('pizzaGame', PizzaGame)
-    .component('pizzaPool', PizzaPool)
-    .component('pizzaRecipe', PizzaRecipe)
     .component('pizzaActions', PizzaActions)
 
     .service('GameService', GameService)

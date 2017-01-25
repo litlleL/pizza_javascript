@@ -14,8 +14,8 @@ export const PizzaMaking = {
 
     template: `
         <div>
-            <pizza-working actual-pizza="$ctrl.pizza"></pizza-working>
-            <pizza-toppings on-topping-click="$ctrl.addTopping($event)"></pizza-toppings>
+            <pizza-making-working actual-pizza="$ctrl.pizza"></pizza-making-working>
+            <pizza-making-toppings on-topping-click="$ctrl.addTopping($event)"></pizza-making-toppings>
         </div>
     `,
     controller: PizzaMakingController
