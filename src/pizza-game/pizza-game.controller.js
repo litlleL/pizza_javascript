@@ -1,19 +1,16 @@
 export class PizzaGameController {
     
-    constructor(GameService, $timeout, $interval, $rootScope) {
+    constructor(GameService, $rootScope, $timeout) {
         this.GameService = GameService
-        this.$timeout = $timeout
-        this.$interval = $interval
         this.$rootScope = $rootScope
+        this.$timeout = $timeout
+        $rootScope.$on('message', (event, message) => this.showAlert(message))
+        $rootScope.$on('gameOver', (event, args) => this.gameOver())
     }
 
     $onInit() {
-
-        this.intervalId = {}
-        this.pool = []
         this.score = 0
         this.message = ''
-        this.allRecipes = this.GameService.getAllRecipes()
     }
 
     /**
@@ -47,40 +44,16 @@ export class PizzaGameController {
      * Game content controller
      */
     start() {
-        const intervalId = this.$interval(() => {
-            let index = Math.floor(Math.random() * this.allRecipes.length)
-            const recipeToAdd = this.GameService.getRecipe(index)
-            this.$rootScope.$broadcast('newPizzaToDo', {
-                type: recipeToAdd.name,
-                toppings: recipeToAdd,
-                timeout: this.$timeout(() => {
-                    this.$interval.cancel(intervalId),
-                    this.gameOver()             
-                }, 10000)
-            })
-            console.table(this.pool)
-        }, 1000)
+        this.$rootScope.$broadcast('start', 'Le jeu commence!')
     }
 
-    addRandomPizza(idx, $rootScope) {
-        
+    gameOver() {
+        this.showAlert('Game over! votre score est de : ' + this.score)
+        this.score = 0
     }
 
     showAlert(message) {
         this.message = message
-        this.$timeout(message => {
-            this.message = ''
-        }, 2000)
-    }
-
-    gameOver() {
-        window.alert('GAME OVER!... Ton score est de : ' + this.score)
-        this.pool.forEach(element => {
-            this.$timeout.cancel(element.timeout)
-        });
-        this.pool.length = 0
-        this.pizza = []
-        this.score = 0
-        this.message = ''
+        console.log('Log - ' + new Date().toLocaleString() + ' : ' + message)
     }
 }

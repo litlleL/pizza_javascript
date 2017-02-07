@@ -6,27 +6,27 @@
      }
 
      $onChanges(changes) {
-        this.pool = changes.poolList.currentValue
+         this.pool = changes.list.currentValue
      }
 
-     recipeSelected(pizza) {
+     recipeSelected(recipe) {
          this.onRecipeClick({ $event: recipe })
      }
  }
 
  export const PizzaPoolList = {
      bindings: {
-         poolList: '<',
+         list: '<',
          onRecipeClick: '&'
      },
 
      template: `
-            <div class="col-xs-10">
-                <button ng-repeat="recipe in $ctrl.pool track by $index"
+            <div class="col-lg-12">
+                <button ng-repeat="recipe in $ctrl.list track by $index"
                     ng-click="$ctrl.recipeSelected(recipe)"
                     type="button" 
-                    class="btn btn-lg ">
-                    {{ recipe.name }}
+                    class="btn btn-sm">
+                    {{ recipe.type }}
                 </button>
             </div>
     `,

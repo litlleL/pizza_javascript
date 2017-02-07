@@ -4,7 +4,7 @@ import { PizzaPool } from './pizza-pool.component'
 import { PizzaPoolDisplay } from './pizza-pool-display/pizza-pool-display.component'
 import { PizzaPoolList } from './pizza-pool-list/pizza-pool-list.component'
 
-import { PizzaPoolService } from './pizza-pool.service'
+import { RecipeService } from './recipe.service'
 
 export default angular.module('PizzaPoolModule', [
 
@@ -14,6 +14,6 @@ export default angular.module('PizzaPoolModule', [
     .component('pizzaPoolDisplay', PizzaPoolDisplay)
     .component('pizzaPoolList', PizzaPoolList)
 
-    .service('PizzaPoolService', PizzaPoolService)
+    .service('RecipeService', RecipeService)
 
 .name

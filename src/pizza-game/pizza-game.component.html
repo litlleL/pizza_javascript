@@ -1,19 +1,15 @@
 <div class="container">
     <div class="row">
-        <!--<pizza-pool pizzas="$ctrl.pool" 
-            on-recipe-click="$ctrl.displayRecipe($event)">
-        </pizza-pool>
-        <pizza-recipe recipe="$ctrl.recipe"></pizza-recipe>-->
         <pizza-pool></pizza-pool>
         <pizza-making></pizza-making>
     </div>
 
     <div class="row ">
-        <pizza-actions score="$ctrl.score" 
-            message="$ctrl.message"
-            on-start="$ctrl.start()" 
-            on-send="$ctrl.checkIfPizzaExist()" 
-            on-delete="$ctrl.deletePizza()">
-        </pizza-actions>
+        <ul class="list-inline">
+            <li><button ng-click="$ctrl.start()">START</button> | </li>
+            <li><button ng-click="$ctrl.stop()">STOP</button> | </li>
+            <li><strong>Score : {{$ctrl.score}}</strong> | </li>
+            <li><strong>{{$ctrl.message}}</strong></li>
+        </ul>
     </div>
 </div>

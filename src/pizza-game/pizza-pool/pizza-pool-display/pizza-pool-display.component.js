@@ -2,7 +2,7 @@ class PizzaPoolDisplayController{
     constructor(){}
 
     $onInit() {
-        this.recipe = ''
+        this.recipe = {}
     }
 
     $onChanges(changes){
@@ -17,8 +17,8 @@ export const PizzaPoolDisplay = {
         recipe: '<'
     },
     template: `
-        <div>
-            <strong>{{$ctrl.recipe.name}}</strong>
+        <div class="col-xs-12 col-sm-9">
+            <strong>{{$ctrl.recipe.type}}</strong>
             <ul> 
                 <li ng-repeat ="topping in $ctrl.recipe.toppings">{{topping}}</li> 
             </ul>
